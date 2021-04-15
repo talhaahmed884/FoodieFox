@@ -1,29 +1,24 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:foodiefox/CustomerDB.dart';
+import 'package:flutter/material.dart';
+import 'package:foodiefox/Screens/login/login.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import 'Customer.dart';
+import 'constants.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
+  runApp(MyApp());
+}
 
-  CustomerDB customerDB = new CustomerDB();
-  bool d = await customerDB.customerExists('talhaahmed@gmail.com');
-  if(d){
-    print('Exists');
-  }else{
-    print("Doesn't Exists");
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Foodie Fox - Login',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primaryColor: kPrimaryColor,
+          textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)),
+      home: LoginScreen(),
+    );
   }
-
-  // Customer customer = new Customer.parameterized(
-  //     'Talha', 'Ahmed', 'talhaahmed884@gamil.com', '03222222990');
-  //
-  // Customer cus = await customerDB.getCustomer('talhaahmed884@gamil.com');
-  // print(cus);
-  // String password =
-  //     await customerDB.getCustomerPassword('talhaahmed884@gamil.com');
-  // print(password + '\n');
-  //
-  // customerDB.deleteCustomer('talhaahmed884@gamil.com');
 }

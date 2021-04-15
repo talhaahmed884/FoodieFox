@@ -1,6 +1,6 @@
 # foodiefox
 
-A restaurant dine-in and takeaway app
+A new Flutter project.
 
 ## Getting Started
 

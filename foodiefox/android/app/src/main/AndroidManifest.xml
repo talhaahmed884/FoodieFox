@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.foodiefox.foodiefox">
+    package="com.example.foodiefox">
    <application
         android:label="foodiefox"
         android:icon="@mipmap/ic_launcher">
