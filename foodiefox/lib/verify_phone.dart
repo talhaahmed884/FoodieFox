@@ -70,9 +70,9 @@ class _VerifyPhoneState extends State<VerifyPhone>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           buildCodeNumberBox(code.length > 0 ?code.substring(0,1): ""),
-                          buildCodeNumberBox(code.length > 0 ?code.substring(1,2): ""),
-                          buildCodeNumberBox(code.length > 0 ?code.substring(2,3): ""),
-                          buildCodeNumberBox(code.length > 0 ?code.substring(3,4): ""),
+                          buildCodeNumberBox(code.length > 1 ?code.substring(1,2): ""),
+                          buildCodeNumberBox(code.length > 2 ?code.substring(2,3): ""),
+                          buildCodeNumberBox(code.length > 3 ?code.substring(3,4): ""),
                         ],
                         ) ,
                       ),
