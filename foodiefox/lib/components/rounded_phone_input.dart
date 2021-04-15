@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:foodiefox/components/input_container.dart';
 
 import '../constants.dart';
@@ -13,6 +14,13 @@ class RoundedPhoneInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return InputContainer(
       child: TextField(
+        onSubmitted: (String str) {
+          // setState((){
+          //   result = str;
+          // });
+          SystemChrome.setEnabledSystemUIOverlays([]);
+          FocusScope.of(context).unfocus();
+        },
         keyboardType: TextInputType.number,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(
