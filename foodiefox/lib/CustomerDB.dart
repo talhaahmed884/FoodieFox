@@ -10,13 +10,11 @@ class CustomerDB {
     return currentCustomerSnapshot.docs.isNotEmpty;
   }
 
-  void addNewCustomer(Customer customer, String password) async {
+  void addNewCustomer(Customer customer) async {
     await _db.add({
-      'FirstName': customer.getFirstName(),
-      'LastName': customer.getLastName(),
+      'Name': customer.getName(),
       'Email': customer.getEmail(),
-      'CellNo': customer.getCellNo(),
-      'Password': password
+      'CellNo': customer.getCellNo()
     });
   }
 
@@ -27,17 +25,9 @@ class CustomerDB {
     var currentCustomerDoc = currentCustomerSnapshot.docs[0].data();
 
     return new Customer.parameterized(
-        currentCustomerDoc['FirstName'],
-        currentCustomerDoc['LastName'],
+        currentCustomerDoc['Name'],
         currentCustomerDoc['Email'],
         currentCustomerDoc['CellNo']);
-  }
-
-  Future<String> getCustomerPassword(String email) async {
-    var currentCustomerSnapshot =
-        await _db.where("Email", isEqualTo: email).get();
-
-    return currentCustomerSnapshot.docs[0].data()['Password'];
   }
 
   void deleteCustomer(String email) async {

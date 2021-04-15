@@ -6,32 +6,22 @@ class CustomerValidator implements CustomerValidate {
     return EmailValidator.validate(email);
   }
 
-  bool validatePassword(String password) {
-    if (password.length >= 5) {
-      return true;
-    }
-    return false;
-  }
-
   bool validateCellNo(String cellNo) {
     if (cellNo.contains('+')) {
       if (cellNo.length != 13) {
         return false;
       }
       cellNo.replaceAll('+', '');
-    } else if (cellNo.length != 11) {
-      return false;
-    }
-
-    if (num.tryParse(cellNo) != null) {
-      return true;
+      if (num.tryParse(cellNo) != null) {
+        return true;
+      }
     }
     return false;
   }
 
-  bool validateName(String firstName, String lastName) {
-    if (firstName != null && lastName != null) {
-      if (firstName.isNotEmpty && lastName.isNotEmpty) {
+  bool validateName(String name) {
+    if (name != null) {
+      if (name.isNotEmpty) {
         return true;
       }
     }

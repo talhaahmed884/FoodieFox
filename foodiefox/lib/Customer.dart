@@ -1,43 +1,32 @@
 import 'package:foodiefox/CustomerDB.dart';
 
 class Customer {
-  String _firstName;
-  String _lastName;
+  String _name;
   String _email;
   String _cellNo;
   CustomerDB customerDB;
 
   Customer() {
-    _firstName = '';
-    _lastName = '';
+    _name = '';
     _email = '';
     _cellNo = '';
     customerDB = new CustomerDB();
   }
 
   Customer.parameterized(
-      String firstName, String lastName, String email, String cellNo) {
-    _firstName = firstName;
-    _lastName = lastName;
+      String name, String email, String cellNo) {
+    _name = name;
     _email = email;
     _cellNo = cellNo;
     customerDB = new CustomerDB();
   }
 
-  void setFirstName(String firstName) {
-    _firstName = firstName;
+  void setName(String name) {
+    _name = name;
   }
 
-  String getFirstName() {
-    return _firstName;
-  }
-
-  void setLastName(String lastName) {
-    _lastName = lastName;
-  }
-
-  String getLastName() {
-    return _lastName;
+  String getName() {
+    return _name;
   }
 
   void setEmail(String email) {
@@ -57,6 +46,6 @@ class Customer {
   }
 
   String toString() {
-    return _firstName + ' ' + _lastName + ' ' + _email + ' ' + _cellNo + '\n';
+    return _name + ' ' + _email + ' ' + _cellNo + '\n';
   }
 }

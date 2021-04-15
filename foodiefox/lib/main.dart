@@ -21,9 +21,6 @@ void main() async {
   //
   // Customer cus = await customerDB.getCustomer('talhaahmed884@gamil.com');
   // print(cus);
-  // String password =
-  //     await customerDB.getCustomerPassword('talhaahmed884@gamil.com');
-  // print(password + '\n');
   //
   // customerDB.deleteCustomer('talhaahmed884@gamil.com');
 }
