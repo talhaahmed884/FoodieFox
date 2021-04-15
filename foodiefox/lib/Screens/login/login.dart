@@ -52,93 +52,47 @@ class _LoginScreenState extends State<LoginScreen>
     //-----------------------------------------
 
     containerSize = Tween<double>(
-            begin: size.height * 0.1, end: defaaultRegisterSize)
+        begin: size.height * 0.1, end: defaaultRegisterSize)
         .animate(
-            CurvedAnimation(parent: animationController, curve: Curves.linear));
+        CurvedAnimation(parent: animationController, curve: Curves.linear));
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          // Cancel Button
-          Visibility(
-            visible: !isLogin,
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: size.width,
-                height: size.height * 0.1,
-                alignment: Alignment.bottomCenter,
-                child: IconButton(
-                  icon: Icon(Icons.close),
-                  onPressed: () {
-                    animationController.reverse();
-                    setState(() {
-                      isLogin = !isLogin;
-                    });
-                  },
-                  color: kPrimaryColor,
-                ),
-              ),
-            ),
-          ),
-          //LOGIN FORM
-          AnimatedOpacity(
-            opacity: isLogin ? 1.0 : 0.0,
-            duration: animationDuration * 4,
-            child: Align(
-              alignment: Alignment.center,
-              child: SingleChildScrollView(
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        body: Stack(
+          children: [
+            // Cancel Button
+            Visibility(
+              visible: !isLogin,
+              child: Align(
+                alignment: Alignment.topCenter,
                 child: Container(
                   width: size.width,
-                  height: defaultLoginSize,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Foodie Fox',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 26),
-                      ),
-                      SizedBox(height: 40),
-                      //ImageBanner('assets/images/Orix_LoginPlaceholder.png'),
-                      //decoration: BoxDecoration(color: Colors.white),
-                      Image.asset('assets/images/hangout_yellow_vector.png'),
-                      SizedBox(height: 40),
-
-                      RoundedPhoneInput(
-                        icon: Icons.mobile_friendly,
-                        hint: 'Phone Number',
-                      ),
-                      SizedBox(height: 10),
-                      RoundedButton(title: 'Continue')
-                    ],
+                  height: size.height * 0.1,
+                  alignment: Alignment.bottomCenter,
+                  child: IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      animationController.reverse();
+                      setState(() {
+                        isLogin = !isLogin;
+                      });
+                    },
+                    color: kPrimaryColor,
                   ),
                 ),
               ),
             ),
-          ),
-
-          // REGISTER CONTAINER
-          AnimatedBuilder(
-            animation: animationController,
-            builder: (context, child) {
-              if (viewInset == 0 && isLogin) {
-                return buildRegisterContainer();
-              } else if (!isLogin) {
-                return buildRegisterContainer();
-              }
-
-              // Return empty container to hide the widget
-              return Container();
-            },
-          ),
-
-          AnimatedOpacity(
-            opacity: isLogin ? 0.0 : 1.0,
-            duration: animationDuration * 5,
-            child: Visibility(
-              visible: !isLogin,
+            //LOGIN FORM
+            AnimatedOpacity(
+              opacity: isLogin ? 1.0 : 0.0,
+              duration: animationDuration * 4,
               child: Align(
                 alignment: Alignment.center,
                 child: SingleChildScrollView(
@@ -150,35 +104,91 @@ class _LoginScreenState extends State<LoginScreen>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Welcome to foodie fox',
+                          'Foodie Fox',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
+                              fontWeight: FontWeight.bold, fontSize: 26),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 40),
+                        //ImageBanner('assets/images/Orix_LoginPlaceholder.png'),
+                        //decoration: BoxDecoration(color: Colors.white),
                         Image.asset('assets/images/hangout_yellow_vector.png'),
-                        SizedBox(height: 20),
-                        RoundedInput(
-                          icon: Icons.face_rounded,
-                          hint: 'Name',
-                        ),
+                        SizedBox(height: 40),
+
                         RoundedPhoneInput(
                           icon: Icons.mobile_friendly,
                           hint: 'Phone Number',
                         ),
-                        RoundedInput(
-                          icon: Icons.email,
-                          hint: 'Email',
-                        ),
                         SizedBox(height: 10),
-                        RoundedButton(title: 'Sign up')
+                        RoundedButton(title: 'Continue')
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+
+            // REGISTER CONTAINER
+            AnimatedBuilder(
+              animation: animationController,
+              builder: (context, child) {
+                if (viewInset == 0 && isLogin) {
+                  return buildRegisterContainer();
+                } else if (!isLogin) {
+                  return buildRegisterContainer();
+                }
+
+                // Return empty container to hide the widget
+                return Container();
+              },
+            ),
+
+            AnimatedOpacity(
+              opacity: isLogin ? 0.0 : 1.0,
+              duration: animationDuration * 5,
+              child: Visibility(
+                visible: !isLogin,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: SingleChildScrollView(
+                    child: Container(
+                      width: size.width,
+                      height: defaultLoginSize,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Welcome to foodie fox',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 24),
+                          ),
+                          SizedBox(height: 20),
+                          Image.asset(
+                              'assets/images/hangout_yellow_vector.png'),
+                          SizedBox(height: 20),
+                          RoundedInput(
+                            icon: Icons.face_rounded,
+                            hint: 'Name',
+                          ),
+                          RoundedPhoneInput(
+                            icon: Icons.mobile_friendly,
+                            hint: 'Phone Number',
+                          ),
+                          RoundedInput(
+                            icon: Icons.email,
+                            hint: 'Email',
+                          ),
+                          SizedBox(height: 10),
+                          RoundedButton(title: 'Sign up')
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -205,9 +215,9 @@ class _LoginScreenState extends State<LoginScreen>
           },
           child: isLogin
               ? Text(
-                  "Don't have an account? Sign up",
-                  style: TextStyle(color: Colors.black54, fontSize: 16),
-                )
+            "Don't have an account? Sign up",
+            style: TextStyle(color: Colors.black54, fontSize: 16),
+          )
               : null,
         ),
       ),
