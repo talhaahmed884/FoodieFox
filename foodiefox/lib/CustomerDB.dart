@@ -4,9 +4,9 @@ import 'package:foodiefox/Customer.dart';
 class CustomerDB {
   var _db = FirebaseFirestore.instance.collection('Customer');
 
-  Future<bool> customerExists(String email) async {
+  Future<bool> customerExists(String cellNo) async {
     var currentCustomerSnapshot =
-        await _db.where("Email", isEqualTo: email).get();
+        await _db.where("CellNo", isEqualTo: cellNo).get();
     return currentCustomerSnapshot.docs.isNotEmpty;
   }
 
@@ -18,21 +18,19 @@ class CustomerDB {
     });
   }
 
-  Future<Customer> getCustomer(String email) async {
+  Future<Customer> getCustomer(String cellNo) async {
     var currentCustomerSnapshot =
-        await _db.where("Email", isEqualTo: email).get();
+        await _db.where("CellNo", isEqualTo: cellNo).get();
 
     var currentCustomerDoc = currentCustomerSnapshot.docs[0].data();
 
-    return new Customer.parameterized(
-        currentCustomerDoc['Name'],
-        currentCustomerDoc['Email'],
-        currentCustomerDoc['CellNo']);
+    return new Customer.parameterized(currentCustomerDoc['Name'],
+        currentCustomerDoc['Email'], currentCustomerDoc['CellNo']);
   }
 
-  void deleteCustomer(String email) async {
+  void deleteCustomer(String cellNo) async {
     var currentCustomerSnapshot =
-        await _db.where("Email", isEqualTo: email).get();
+        await _db.where("CellNo", isEqualTo: cellNo).get();
     await currentCustomerSnapshot.docs[0].reference.delete();
   }
 }
