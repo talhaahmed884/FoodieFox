@@ -23,9 +23,10 @@ class _LoginScreenState extends State<LoginScreen>
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays([]);
 
-    KeyboardVisibilityBuilder(builder: (context, visible) {
-      if (!visible) {
+    KeyboardVisibilityController().onChange.listen((bool visible) {
+      if(!visible){
         SystemChrome.setEnabledSystemUIOverlays([]);
+        FocusScope.of(context).unfocus();
       }
     });
 
@@ -47,15 +48,10 @@ class _LoginScreenState extends State<LoginScreen>
         .viewInsets
         .bottom; // we are using this to determine Keyboard is opened or not)
     double defaultLoginSize = size.height - (size.height * 0.2);
-    double defaaultRegisterSize = size.height - (size.height * 0.1);
-    //------------------------------------------
-    double w = MediaQuery.of(context).size.width;
-    var padding = MediaQuery.of(context).padding;
-    double screen_width = w - padding.left - padding.right;
-    //-----------------------------------------
+    double defaultRegisterSize = size.height - (size.height * 0.1);
 
     containerSize = Tween<double>(
-            begin: size.height * 0.1, end: defaaultRegisterSize)
+            begin: size.height * 0.1, end: defaultRegisterSize)
         .animate(
             CurvedAnimation(parent: animationController, curve: Curves.linear));
 

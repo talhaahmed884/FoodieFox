@@ -12,7 +12,7 @@ class InputContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
 
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
