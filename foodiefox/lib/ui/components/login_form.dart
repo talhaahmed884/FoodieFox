@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:foodiefox/backend/actors/Customer.dart';
 import 'package:foodiefox/ui/components/constants.dart';
 import 'package:foodiefox/ui/components/rounded_phone_input.dart';
@@ -57,6 +58,8 @@ class LoginForm extends StatelessWidget {
                       customer.setCellNo(cellNoController.text);
                       customer = await customer.customerDB
                           .getCustomer(customer.getCellNo());
+                      cellNoController.clear();
+                      FocusScope.of(context).unfocus();
                     }
                   },
                   borderRadius: BorderRadius.circular(30),

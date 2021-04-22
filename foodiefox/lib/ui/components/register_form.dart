@@ -65,7 +65,7 @@ class RegisterForm extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   InkWell(
-                    onTap: () {
+                    onTap: () async {
                       if (nameController.text.isNotEmpty &&
                           emailController.text.isNotEmpty &&
                           cellNoController.text.isNotEmpty) {
@@ -74,6 +74,10 @@ class RegisterForm extends StatelessWidget {
                             emailController.text,
                             cellNoController.text);
                         customer.customerDB.addNewCustomer(customer);
+
+                        nameController.clear();
+                        cellNoController.clear();
+                        emailController.clear();
                       }
                     },
                     borderRadius: BorderRadius.circular(30),
