@@ -4,16 +4,15 @@ import 'package:foodiefox/ui/components/constants.dart';
 import 'package:foodiefox/ui/components/rounded_input.dart';
 import 'package:foodiefox/ui/components/rounded_phone_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodiefox/ui/screens/home_screen.dart';
-import 'package:foodiefox/ui/screens/verify_phone.dart';
+import 'package:foodiefox/ui/components/verify_phone.dart';
 
 // ignore: must_be_immutable
 class RegisterForm extends StatelessWidget {
   String phoneNumber = "";
 
   FirebaseAuth _auth = FirebaseAuth.instance;
-  bool showLoading = true ;
-  String verificationId = ""; 
+  bool showLoading = true;
+  String verificationId = "";
   RegisterForm(
       {Key key,
       @required this.isLogin,
@@ -83,47 +82,51 @@ class RegisterForm extends StatelessWidget {
                             emailController.text,
                             cellNoController.text);
                         customer.customerDB.addNewCustomer(customer);
-                      
-                      phoneNumber = cellNoController.text ;
-                      
-                      await _auth.verifyPhoneNumber(
-                      phoneNumber: phoneNumber, 
-                      timeout:Duration(seconds: 60),
-                      
-                      verificationCompleted: (AuthCredential credential)async{
-                        showLoading = false ;
-                        // Navigator.of(context).pop();
 
-                        // UserCredential result = await _auth.signInWithCredential(credential);
+                        phoneNumber = cellNoController.text;
 
-                        // User user = result.user;
+                        await _auth.verifyPhoneNumber(
+                          phoneNumber: phoneNumber,
+                          timeout: Duration(seconds: 60),
+                          verificationCompleted:
+                              (AuthCredential credential) async {
+                            showLoading = false;
+                            // Navigator.of(context).pop();
 
-                        // if(user != null){
-                        //   print("code automatically fetchedddddd !!!!!!!!!!!!!!!!!!!!!") ;
-                        //   Navigator.push(context, MaterialPageRoute(
-                        //     builder: (context) => HomeScreen(user: user,)
-                        //   ));
-                        // }else{
-                        //   print("Error");
-                        // }
-                      }, 
+                            // UserCredential result = await _auth.signInWithCredential(credential);
 
-                      verificationFailed: (FirebaseAuthException exception)async{
-                        print(exception) ;
-                      }, 
+                            // User user = result.user;
 
-                      codeSent: (verificationId,resendingToken)async{
-                        showLoading = false ;
-                        print("code is senttttttttt") ;
-                        this.verificationId = verificationId ;
-                        print("verification id issssss:"+this.verificationId) ;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => VerifyPhone(phoneNumber: phoneNumber,verificationId: this.verificationId,)),); 
-                      }, 
-
-                      codeAutoRetrievalTimeout: (verificationId)async{
-
-                      },
-                    );
+                            // if(user != null){
+                            //   print("code automatically fetchedddddd !!!!!!!!!!!!!!!!!!!!!") ;
+                            //   Navigator.push(context, MaterialPageRoute(
+                            //     builder: (context) => HomeScreen(user: user,)
+                            //   ));
+                            // }else{
+                            //   print("Error");
+                            // }
+                          },
+                          verificationFailed:
+                              (FirebaseAuthException exception) async {
+                            print(exception);
+                          },
+                          codeSent: (verificationId, resendingToken) async {
+                            showLoading = false;
+                            print("code is senttttttttt");
+                            this.verificationId = verificationId;
+                            print("verification id issssss:" +
+                                this.verificationId);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => VerifyPhone(
+                                        phoneNumber: phoneNumber,
+                                        verificationId: this.verificationId,
+                                      )),
+                            );
+                          },
+                          codeAutoRetrievalTimeout: (verificationId) async {},
+                        );
 
                         // nameController.clear();
                         // cellNoController.clear();

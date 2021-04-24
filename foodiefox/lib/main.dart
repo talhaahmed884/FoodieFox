@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
                 GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)),
         home: LoginScreen(),
       ),
-      
     );
   }
 }
@@ -43,11 +42,9 @@ class InitializerWidget extends StatefulWidget {
 }
 
 class _InitializerWidgetState extends State<InitializerWidget> {
-
   FirebaseAuth _auth;
   User _user;
   bool isLoading = true;
-
 
   @override
   void initState() {
@@ -61,10 +58,14 @@ class _InitializerWidgetState extends State<InitializerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading ? Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    ) : _user == null ? LoginScreen() : HomeScreen();
+    return isLoading
+        ? Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+        : _user == null
+            ? LoginScreen()
+            : HomeScreen();
   }
 }

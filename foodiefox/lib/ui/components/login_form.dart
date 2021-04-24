@@ -3,12 +3,9 @@ import 'package:foodiefox/backend/actors/Customer.dart';
 import 'package:foodiefox/ui/components/constants.dart';
 import 'package:foodiefox/ui/components/rounded_phone_input.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodiefox/ui/screens/verify_phone.dart';
-import 'package:foodiefox/ui/screens/home_screen.dart';
-
+import 'package:foodiefox/ui/components/verify_phone.dart';
 
 class LoginForm extends StatefulWidget {
-
   LoginForm(
       {Key key,
       @required this.isLogin,
@@ -33,9 +30,9 @@ class _LoginFormState extends State<LoginForm> {
 
   FirebaseAuth _auth = FirebaseAuth.instance;
 
-  String verificationId = ""; 
+  String verificationId = "";
 
-  bool showLoading = false ; 
+  bool showLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,53 +68,54 @@ class _LoginFormState extends State<LoginForm> {
                 InkWell(
                   onTap: () async {
                     if (widget.cellNoController.text.isNotEmpty) {
-                      
-                      showLoading = true ;
+                      showLoading = true;
                       Customer customer = new Customer();
                       customer.setCellNo(widget.cellNoController.text);
                       customer = await customer.customerDB
                           .getCustomer(customer.getCellNo());
-                      
-                    FocusScope.of(context).unfocus();
-                    phoneNumber = widget.cellNoController.text ;
-                    // print(phoneNumber) ;
-                    await _auth.verifyPhoneNumber(
-                      phoneNumber: phoneNumber, 
-                      timeout:Duration(seconds: 60),
-                      
-                      verificationCompleted: (AuthCredential credential)async{
-                        // showLoading = false ;
-                        // Navigator.of(context).pop();
 
-                        // UserCredential result = await _auth.signInWithCredential(credential);
+                      FocusScope.of(context).unfocus();
+                      phoneNumber = widget.cellNoController.text;
+                      // print(phoneNumber) ;
+                      await _auth.verifyPhoneNumber(
+                        phoneNumber: phoneNumber,
+                        timeout: Duration(seconds: 60),
+                        verificationCompleted:
+                            (AuthCredential credential) async {
+                          // showLoading = false ;
+                          // Navigator.of(context).pop();
 
-                        // User user = result.user;
+                          // UserCredential result = await _auth.signInWithCredential(credential);
 
-                        // if(user != null){
-                        //   print("code automatically fetchedddddd !!!!!!!!!!!!!!!!!!!!!") ;
-                        //   Navigator.push(context, MaterialPageRoute(
-                        //     builder: (context) => HomeScreen(user: user,)
-                        //   ));
-                        // }else{
-                        //   print("Error");
-                        // }
-                      }, 
-                      verificationFailed: (FirebaseAuthException exception)async{
-                        print(exception) ;
-                      }, 
-                      codeSent: (verificationId,resendingToken)async{
-                        showLoading = false ;
-                        print("code is senttttttttt") ;
-                        this.verificationId = verificationId ;
-                        print("verification id issssss:"+this.verificationId) ;
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => VerifyPhone(phoneNumber: phoneNumber,verificationId: this.verificationId,)),); 
-                      }, 
-                      codeAutoRetrievalTimeout: (verificationId)async{
+                          // User user = result.user;
 
-                      },
-                    );
-
-                    //widget.cellNoController.clear();
+                          // if(user != null){
+                          //   print("code automatically fetchedddddd !!!!!!!!!!!!!!!!!!!!!") ;
+                          //   Navigator.push(context, MaterialPageRoute(
+                          //     builder: (context) => HomeScreen(user: user,)
+                          //   ));
+                          // }else{
+                          //   print("Error");
+                          // }
+                        },
+                        verificationFailed:
+                            (FirebaseAuthException exception) async {
+                          print(exception);
+                        },
+                        codeSent: (verificationId, resendingToken) async {
+                          showLoading = false;
+                          this.verificationId = verificationId;
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerifyPhone(
+                                      phoneNumber: phoneNumber,
+                                      verificationId: this.verificationId,
+                                    )),
+                          );
+                        },
+                        codeAutoRetrievalTimeout: (verificationId) async {},
+                      );
                     }
                   },
                   borderRadius: BorderRadius.circular(30),
