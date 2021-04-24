@@ -3,9 +3,18 @@ import 'package:foodiefox/backend/actors/Customer.dart';
 import 'package:foodiefox/ui/components/constants.dart';
 import 'package:foodiefox/ui/components/rounded_input.dart';
 import 'package:foodiefox/ui/components/rounded_phone_input.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:foodiefox/ui/screens/home_screen.dart';
+import 'package:foodiefox/ui/screens/verify_phone.dart';
 
+// ignore: must_be_immutable
 class RegisterForm extends StatelessWidget {
-  const RegisterForm(
+  String phoneNumber = "";
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  bool showLoading = true ;
+  String verificationId = ""; 
+  RegisterForm(
       {Key key,
       @required this.isLogin,
       @required this.animationDuration,
@@ -74,10 +83,51 @@ class RegisterForm extends StatelessWidget {
                             emailController.text,
                             cellNoController.text);
                         customer.customerDB.addNewCustomer(customer);
+                      
+                      phoneNumber = cellNoController.text ;
+                      
+                      await _auth.verifyPhoneNumber(
+                      phoneNumber: phoneNumber, 
+                      timeout:Duration(seconds: 60),
+                      
+                      verificationCompleted: (AuthCredential credential)async{
+                        showLoading = false ;
+                        // Navigator.of(context).pop();
 
-                        nameController.clear();
-                        cellNoController.clear();
-                        emailController.clear();
+                        // UserCredential result = await _auth.signInWithCredential(credential);
+
+                        // User user = result.user;
+
+                        // if(user != null){
+                        //   print("code automatically fetchedddddd !!!!!!!!!!!!!!!!!!!!!") ;
+                        //   Navigator.push(context, MaterialPageRoute(
+                        //     builder: (context) => HomeScreen(user: user,)
+                        //   ));
+                        // }else{
+                        //   print("Error");
+                        // }
+                      }, 
+
+                      verificationFailed: (FirebaseAuthException exception)async{
+                        print(exception) ;
+                      }, 
+
+                      codeSent: (verificationId,resendingToken)async{
+                        showLoading = false ;
+                        print("code is senttttttttt") ;
+                        this.verificationId = verificationId ;
+                        print("verification id issssss:"+this.verificationId) ;
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => VerifyPhone(phoneNumber: phoneNumber,verificationId: this.verificationId,)),); 
+                      }, 
+
+                      codeAutoRetrievalTimeout: (verificationId)async{
+
+                      },
+                    );
+
+                        // nameController.clear();
+                        // cellNoController.clear();
+                        // emailController.clear();
                       }
                     },
                     borderRadius: BorderRadius.circular(30),

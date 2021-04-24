@@ -5,6 +5,8 @@ import 'package:foodiefox/UI/components/register_form.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:foodiefox/UI/components/constants.dart';
 
+
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -16,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen>
   Animation<double> containerSize;
   AnimationController animationController;
   Duration animationDuration = Duration(microseconds: 270);
+
 
   // text field controller to get the information from the stateless text fields
   // gets information from the Cell No text field
@@ -62,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen>
             begin: size.height * 0.1, end: defaultRegisterSize)
         .animate(
             CurvedAnimation(parent: animationController, curve: Curves.linear));
-
+    
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
