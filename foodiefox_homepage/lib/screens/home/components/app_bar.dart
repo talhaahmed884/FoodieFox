@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foodiefox_homepage/constants.dart';
 
 AppBar homeAppBar(BuildContext context) {
   return AppBar(
