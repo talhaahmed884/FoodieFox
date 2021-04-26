@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:foodiefox/ui/components/input_container.dart';
-import 'package:foodiefox/ui/components/constants.dart';
+import 'input_container.dart';
+import 'constants.dart';
 
 class RoundedPhoneInput extends StatelessWidget {
   const RoundedPhoneInput(

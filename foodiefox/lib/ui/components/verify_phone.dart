@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodiefox/UI/components/numeric_pad.dart';
-import 'package:foodiefox/ui/screens/home_screen.dart';
+import 'package:foodiefox/ui/screens/home-screen.dart';
+import 'constants.dart';
+import 'numeric_pad.dart';
 
 // ignore: must_be_immutable
 class VerifyPhone extends StatefulWidget {
@@ -98,7 +99,7 @@ class _VerifyPhoneState extends State<VerifyPhone> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 18,
-                              color: Color(0xFF818181),
+                              color: kPrimaryColor,
                             ),
                           ),
                           SizedBox(
@@ -106,32 +107,14 @@ class _VerifyPhoneState extends State<VerifyPhone> {
                           ),
                           GestureDetector(
                             onTap: () async {
-                              print("Resend the code to the user.");
                               print(widget.phoneNumber);
                               await _auth.verifyPhoneNumber(
                                 phoneNumber: widget.phoneNumber,
                                 timeout: Duration(seconds: 60),
                                 verificationCompleted:
-                                    (AuthCredential credential) async {
-                                  // showLoading = false ;
-                                  // Navigator.of(context).pop();
-
-                                  // UserCredential result = await _auth.signInWithCredential(credential);
-
-                                  // User user = result.user;
-
-                                  // if(user != null){
-                                  //   print("code automatically fetchedddddd !!!!!!!!!!!!!!!!!!!!!") ;
-                                  //   Navigator.push(context, MaterialPageRoute(
-                                  //     builder: (context) => HomeScreen(user: user,)
-                                  //   ));
-                                  // }else{
-                                  //   print("Error");
-                                  // }
-                                },
+                                    (AuthCredential credential) async {},
                                 verificationFailed:
                                     (FirebaseAuthException exception) async {
-                                  print("failed exception here !!! ");
                                   print(exception);
                                 },
                                 codeSent:
@@ -179,8 +162,6 @@ class _VerifyPhoneState extends State<VerifyPhone> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          print("Verify Action");
-                          // print("verification id is: " + widget.verificationId) ;
                           PhoneAuthCredential phoneAuthCredential =
                               PhoneAuthProvider.credential(
                                   smsCode: code,
@@ -189,7 +170,7 @@ class _VerifyPhoneState extends State<VerifyPhone> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFFFFDC3D),
+                            color: kPrimaryColor,
                             borderRadius: BorderRadius.all(
                               Radius.circular(15),
                             ),
@@ -220,7 +201,6 @@ class _VerifyPhoneState extends State<VerifyPhone> {
                   code = code.substring(0, code.length - 1);
                 }
               });
-              print(code);
             })
           ],
         ),

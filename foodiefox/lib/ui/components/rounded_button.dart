@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodiefox/ui/components/constants.dart';
+import 'constants.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton(

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:foodiefox/ui/screens/login.dart';
+import 'package:foodiefox/ui/components/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:foodiefox/ui/components/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodiefox/ui/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,42 +28,8 @@ class MyApp extends StatelessWidget {
             primaryColor: kPrimaryColor,
             textTheme:
                 GoogleFonts.robotoTextTheme(Theme.of(context).textTheme)),
-        home: LoginScreen(),
+        home: SplashScreen(),
       ),
     );
-  }
-}
-
-class InitializerWidget extends StatefulWidget {
-  @override
-  _InitializerWidgetState createState() => _InitializerWidgetState();
-}
-
-class _InitializerWidgetState extends State<InitializerWidget> {
-  FirebaseAuth _auth;
-  User _user;
-  bool isLoading = true;
-
-  @override
-  void initState() {
-    // ignore: todo
-    // TODO: implement initState
-    super.initState();
-    _auth = FirebaseAuth.instance;
-    _user = _auth.currentUser;
-    isLoading = false;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return isLoading
-        ? Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          )
-        : _user == null
-            ? LoginScreen()
-            : HomeScreen();
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodiefox/ui/components/numeric_pad.dart';
+import 'numeric_pad.dart';
 
 class OTPVerification extends StatefulWidget {
   final String cellNumber;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodiefox/ui/components/constants.dart';
+import 'constants.dart';
 
 class Categories extends StatelessWidget {
   const Categories({
@@ -11,7 +11,7 @@ class Categories extends StatelessWidget {
     return TabBar(
       indicator: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: kPrimaryColor.withOpacity(0.6),
+        color: kPrimaryColor,
       ),
       indicatorPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
       tabs: <Widget>[

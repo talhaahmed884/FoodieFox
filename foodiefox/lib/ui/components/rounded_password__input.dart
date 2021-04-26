@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodiefox/ui/components/input_container.dart';
-import 'package:foodiefox/ui/components/constants.dart';
+import 'input_container.dart';
+import 'constants.dart';
 
 class RoundedPasswordInput extends StatelessWidget {
   const RoundedPasswordInput({Key key, @required this.hint}) : super(key: key);
