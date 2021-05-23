@@ -1,0 +1,151 @@
+{
+  "project_info": {
+    "project_number": "933078665464",
+    "firebase_url": "https://foodiefox-ae721-default-rtdb.firebaseio.com",
+    "project_id": "foodiefox-ae721",
+    "storage_bucket": "foodiefox-ae721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933078665464:android:376273f180842b0ad1930d",
+        "android_client_info": {
+          "package_name": "com.example.foodiefox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933078665464-r6mchtrmbcd24avsert6dsg8k7m051j3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodiefox",
+            "certificate_hash": "e77ff928a3e90428728520939bee98e84c56e1e7"
+          }
+        },
+        {
+          "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh87-RwO1ffLKaBD2iSdH0GZORvGxB3P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933078665464:android:669e4da832c41806d1930d",
+        "android_client_info": {
+          "package_name": "com.example.testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh87-RwO1ffLKaBD2iSdH0GZORvGxB3P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933078665464:android:250bc0dda33c9bc1d1930d",
+        "android_client_info": {
+          "package_name": "com.foodiefox.foodiefox_customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933078665464-3m8i4tfk1nubtip8iffaj85tu4g99aru.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodiefox.foodiefox_customer",
+            "certificate_hash": "b6bae9c70bec2501a97f8110fb14b945246d7678"
+          }
+        },
+        {
+          "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh87-RwO1ffLKaBD2iSdH0GZORvGxB3P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933078665464:android:7030172d3eb52a2bd1930d",
+        "android_client_info": {
+          "package_name": "com.foodiefox.foodiefox_restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933078665464-j2eu5d2re8gjb7k20c7rtv4unhmjhavb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodiefox.foodiefox_restaurant",
+            "certificate_hash": "b6bae9c70bec2501a97f8110fb14b945246d7678"
+          }
+        },
+        {
+          "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh87-RwO1ffLKaBD2iSdH0GZORvGxB3P8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933078665464-vlsui3dtk3mei5fg01qlj2enjhn6ea0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
