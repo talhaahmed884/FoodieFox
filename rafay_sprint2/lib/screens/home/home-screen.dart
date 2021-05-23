@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sprint2/components/search_box.dart';
 import 'package:sprint2/constants.dart';
-import 'package:sprint2/screens/home/home_components/categories.dart';
-import 'package:sprint2/screens/home/home_components/foxpick_card.dart';
-
-import 'home_components/cards.dart';
-import 'home_components/menu-page.dart';
+import 'package:sprint2/screens/home/components/categories.dart';
+import 'package:sprint2/screens/home/components/foxpick_card.dart';
+import 'components/cards.dart';
+import '../../models/Data.dart';
+import '../menu/menu-page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -265,31 +265,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/burningbrownie.png",
-                                "Burning Brownie"),
-                            child: FoxPickCard(
-                                title: "Burning Brownie",
-                                status: "Open",
-                                image: "assets/images/burningbrownie.png"),
-                          ),
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/asianwok.png", "Asian Wok"),
-                            child: FoxPickCard(
-                                title: "Asian Wok",
-                                status: "Open",
-                                image: "assets/images/asianwok.png"),
-                          ),
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/howdy.png", "Howdy"),
-                            child: FoxPickCard(
-                                title: "Howdy",
-                                status: "Open",
-                                image: "assets/images/howdy.png"),
-                          ),
+                          for (int index = 0; index < 3; index++)
+                            InkWell(
+                              onTap: () => openMenuPage(demoRestaurants[index]),
+                              child: FoxPickCard(
+                                  title: demoRestaurants[index].restaurant_name,
+                                  status: demoRestaurants[index].timings,
+                                  image: demoRestaurants[index].res_image),
+                            ),
                         ],
                       ),
                     ),
@@ -327,37 +310,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/chickachino.png",
-                                "Chicka Chino"),
-                            child: Cards(
-                              title: "Chicka Chino",
-                              image: "assets/images/chickachino.png",
-                              box_width: 0.6,
-                              box_height: 200,
+                          for (int index = demoRestaurants.length - 1;
+                              index > demoRestaurants.length - 4;
+                              index--)
+                            InkWell(
+                              onTap: () => openMenuPage(demoRestaurants[index]),
+                              child: Cards(
+                                title: demoRestaurants[index].restaurant_name,
+                                image: demoRestaurants[index].res_image,
+                                box_width: 0.6,
+                                box_height: 200,
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/pizzahut.png", "Pizza Hut"),
-                            child: Cards(
-                              title: "Pizza Hut",
-                              image: "assets/images/pizzahut.png",
-                              box_width: 0.6,
-                              box_height: 200,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/roasters.png", "Roasters"),
-                            child: Cards(
-                              title: "Roasters",
-                              image: "assets/images/roasters.png",
-                              box_width: 0.6,
-                              box_height: 200,
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -394,37 +358,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.vertical,
                       child: Column(
                         children: [
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/chickachino.png",
-                                "Chicka Chino"),
-                            child: Cards(
-                              title: "Chicka Chino",
-                              image: "assets/images/chickachino.png",
-                              box_width: 1.0,
-                              box_height: 230,
+                          for (int index = 0;
+                              index < demoRestaurants.length;
+                              index++)
+                            InkWell(
+                              onTap: () => openMenuPage(demoRestaurants[index]),
+                              child: Cards(
+                                title: demoRestaurants[index].restaurant_name,
+                                image: demoRestaurants[index].res_image,
+                                box_width: 1.0,
+                                box_height: 230,
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/pizzahut.png", "Pizza Hut"),
-                            child: Cards(
-                              title: "Pizza Hut",
-                              image: "assets/images/pizzahut.png",
-                              box_width: 1.0,
-                              box_height: 230,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () => openMenuPage(
-                                "assets/images/roasters.png", "Roasters"),
-                            child: Cards(
-                              title: "Roasters",
-                              image: "assets/images/roasters.png",
-                              box_width: 1.0,
-                              box_height: 230,
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -438,10 +383,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void openMenuPage(String imge, String nme) {
+  void openMenuPage(Fox_Restaurant _restaurant) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => RestaurantPage(image: imge, name: nme)));
+            builder: (context) => RestaurantPage(
+                  selected_restaurant: _restaurant,
+                )));
   }
 }

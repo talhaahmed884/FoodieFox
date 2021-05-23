@@ -30,11 +30,7 @@ List<Map> drawerItems = [
   {'icon': Icons.account_circle, 'title': 'Profile', 'color': 'primary_Yellow'},
   {'icon': Icons.article, 'title': 'Orders', 'color': 'primary_Yellow'},
   {'icon': Icons.favorite, 'title': 'Favorites', 'color': 'primary_Yellow'},
-  {
-    'icon': Icons.confirmation_num_rounded,
-    'title': 'Vouchers',
-    'color': 'primary_Yellow'
-  },
+  {'icon': Icons.receipt, 'title': 'Vouchers', 'color': 'primary_Yellow'},
   {'icon': Icons.mail, 'title': 'Email Us', 'color': 'primary_Yellow'},
   // {
   //   'icon': FontAwesomeIcons.paw,
