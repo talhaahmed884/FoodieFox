@@ -53,23 +53,31 @@ Widget _splashScreen() {
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Image.asset('assets/images/fox.png'),
-              Text('Dine-Inn and Take away',
-                  style: GoogleFonts.varelaRound(
-                      fontSize: 25, fontWeight: FontWeight.w600)),
-              Text('Lets have the best restaurant experience',
-                  style: GoogleFonts.varelaRound(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black38,
-                      height: 2.5)),
-              Text('with FoodieFox :)))',
-                  style: GoogleFonts.varelaRound(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black38,
-                  ))
+              Container(
+                margin: EdgeInsets.only(left: 45, right: 20),
+                child: Column(
+                  children: [
+                    Text('Dine-Inn and Take away',
+                        style: GoogleFonts.varelaRound(
+                            fontSize: 25, fontWeight: FontWeight.w600)),
+                    Text('Lets have the best restaurant',
+                        style: GoogleFonts.varelaRound(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black38,
+                            height: 2.5)),
+                    Text('experience with FoodieFox :)))',
+                        style: GoogleFonts.varelaRound(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black38,
+                        ))
+                  ],
+                ),
+              )
             ],
           ),
         ),
