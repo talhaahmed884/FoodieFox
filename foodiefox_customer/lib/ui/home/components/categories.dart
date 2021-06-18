@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodiefox_customer/ui/Story/Story.dart';
+import 'package:foodiefox_customer/ui/Story/components/data.dart';
 import 'package:foodiefox_customer/ui/components/constants.dart';
 
 class Category extends StatelessWidget {
@@ -52,7 +54,14 @@ class Category extends StatelessWidget {
                 right: 0,
                 bottom: 0,
               ),
-              onPressed: () {},
+              onPressed: () {
+                if (title.compareTo("Vibe Check") == 0) {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => StoryScreen(stories: stories)));
+                }
+              },
             ),
           ],
         ),

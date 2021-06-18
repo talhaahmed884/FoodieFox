@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foodiefox/UI/components/colors.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:foodiefox/backend/actors/Customer.dart';
+import 'package:foodiefox_customer/ui/components/constants.dart';
+import 'package:foodiefox_customer/backend/actors/Customer.dart';
 
 class Wallet extends StatefulWidget {
   Customer customer;
 
-  Wallet({@required this.customer}) ;
-  
+  Wallet({@required this.customer});
+
   @override
   _WalletState createState() => _WalletState();
 }
@@ -28,7 +26,7 @@ class _WalletState extends State<Wallet> {
                   _buildHeader(),
                   SizedBox(height: 16),
                   _buildGradientBalanceCard(),
-                  SizedBox(height: 24.0),
+                  SizedBox(height: 30.0),
                   _buildCategories(),
                 ],
               ),
@@ -40,16 +38,15 @@ class _WalletState extends State<Wallet> {
     );
   }
 
-
   Row _buildCategories() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         _buildCategoryCard(
+          text: "Add Funds",
           bgColor: Constants.paymentBackgroundColor,
           iconColor: Constants.paymentIconColor,
           iconData: Icons.payment,
-          text: "Add Funds",
         ),
       ],
     );
@@ -77,7 +74,7 @@ class _WalletState extends State<Wallet> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Rs. "+widget.customer.getBalance().toString(),
+              "Rs. 1000",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
@@ -146,32 +143,23 @@ class _WalletState extends State<Wallet> {
       {Color bgColor, Color iconColor, IconData iconData, String text}) {
     return Column(
       children: <Widget>[
-        InkWell( 
-        child: Container(
-          height: 75,
-          width: 75,
-          decoration: BoxDecoration(
-            color: bgColor,
-            borderRadius: BorderRadius.circular(5),
+        InkWell(
+          child: Container(
+            height: 75,
+            width: 75,
+            decoration: BoxDecoration(
+              color: bgColor,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: Icon(
+              iconData,
+              color: iconColor,
+              size: 36,
+            ),
           ),
-          child: Icon(
-            iconData,
-            color: iconColor,
-            size: 36,
-          ),
-          
-        ),
-        onTap: (){
-         Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => AddFunds()),
-          );
-        }
+          onTap: () {},
         )
       ],
     );
   }
-
 }
-

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodiefox_customer/backend/actors/Customer.dart';
+import 'package:foodiefox_customer/ui/profile/profile.dart';
+import 'package:foodiefox_customer/ui/wallet/wallet_ui.dart';
 import '../components/constants.dart';
 
 class DrawerScreen extends StatefulWidget {
@@ -9,6 +12,9 @@ class DrawerScreen extends StatefulWidget {
 class _DrawerScreenState extends State<DrawerScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    double defaultLoginSize = size.height - (size.height * 0.2);
+
     return Container(
       color: primary_Red,
       padding: EdgeInsets.only(top: 50, bottom: 70, left: 10),
@@ -63,7 +69,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           ],
                         ),
                         onTap: () {
-                          print("---PRESSED--->" + element['title']);
+                          if (element['title'] == 'Wallet') {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Wallet(
+                                    customer: new Customer.parameterized(
+                                        'Rafay Rashed',
+                                        'rafayrashed@gmail.com',
+                                        '+923222222990'))));
+                          }
                         },
                       ),
                     ))

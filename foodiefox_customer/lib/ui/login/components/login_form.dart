@@ -78,11 +78,20 @@ class _LoginFormState extends State<LoginForm>
 
           if (validator
               .validateCellNo(phoneEditingController.text.toString())) {
+            String cellNo = validator
+                .transformPhoneNumber(phoneEditingController.text.toString());
+            print('--------------------------' + cellNo);
             Navigator.push(
                 context,
                 new MaterialPageRoute(
-                    builder: (context) => OTPVerification(
-                        cellNumber: phoneEditingController.text.toString())));
+                    builder: (context) => OTPVerification(cellNumber: cellNo)));
+          } else {
+            SnackBar snackBar = SnackBar(
+              content: Text('This Phone Number is invalid!!'),
+              backgroundColor: primary_Yellow,
+              duration: Duration(seconds: 5),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         }
       },

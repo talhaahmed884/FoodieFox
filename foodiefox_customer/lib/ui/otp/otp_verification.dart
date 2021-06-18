@@ -221,7 +221,7 @@ class _OTPVerification extends State<OTPVerification> {
         await _firebaseAuth.signInWithCredential(phoneAuthCredential);
 
     if (userCredential?.user != null) {
-      await getRestaurants();
+      // await getRestaurants();
 
       Navigator.of(context).pop();
       Navigator.push(

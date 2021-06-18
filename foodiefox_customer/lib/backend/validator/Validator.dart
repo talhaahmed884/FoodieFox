@@ -6,7 +6,7 @@ class Validator {
   }
 
   bool validateCellNo(String cellNo) {
-    if (cellNo.contains('+')) {
+    if (cellNo.contains('+92', 0)) {
       if (cellNo.length != 13) {
         return false;
       }
@@ -14,8 +14,22 @@ class Validator {
       if (num.tryParse(cellNo) != null) {
         return true;
       }
+    } else {
+      if (cellNo.length == 11) {
+        if (cellNo.startsWith('0')) {
+          return true;
+        }
+      }
     }
     return false;
+  }
+
+  String transformPhoneNumber(String cellNo) {
+    if (cellNo.startsWith('0')) {
+      cellNo = cellNo.replaceRange(0, 1, '+92');
+    }
+
+    return cellNo;
   }
 
   bool validateName(String name) {

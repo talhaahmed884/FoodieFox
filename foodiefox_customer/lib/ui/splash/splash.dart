@@ -57,7 +57,7 @@ Widget _splashScreen() {
             children: <Widget>[
               Image.asset('assets/images/fox.png'),
               Container(
-                margin: EdgeInsets.only(left: 45, right: 20),
+                margin: EdgeInsets.only(left: 70),
                 child: Column(
                   children: [
                     Text('Dine-Inn and Take away',
