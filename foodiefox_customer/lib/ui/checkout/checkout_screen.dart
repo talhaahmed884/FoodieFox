@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodiefox_customer/ui/components/constants.dart';
+import 'package:foodiefox_customer/ui/models/Cart.dart';
 import 'components/body.dart';
 import 'components/check_out_card.dart';
 
@@ -24,7 +25,7 @@ class CartScreen extends StatelessWidget {
             style: TextStyle(color: Colors.black),
           ),
           Text(
-            "3 items",
+            demoCarts.length.toString() + " items",
             style: Theme.of(context).textTheme.caption,
           ),
         ],

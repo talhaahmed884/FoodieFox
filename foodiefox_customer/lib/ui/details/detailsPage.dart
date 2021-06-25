@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodiefox_customer/ui/components/constants.dart';
+import 'package:foodiefox_customer/ui/models/Cart.dart';
 import 'package:foodiefox_customer/ui/models/Data.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -311,13 +312,50 @@ class _DetailsPageState extends State<DetailsPage> {
                           color: primary_Yellow),
                       height: 50.0,
                       child: Center(
-                        child: Text(
-                          'Add to cart',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Circular',
-                            fontSize: 18,
+                        child: InkWell(
+                          onTap: () {
+                            demoCarts.add(Cart(
+                                product: Product(
+                                    id: 0,
+                                    description: '',
+                                    images: widget.heroTag,
+                                    nameOfProduct: widget.foodName,
+                                    price: widget.foodPrice,
+                                    rating: 0,
+                                    further_details: [
+                                      FurtherDetail(
+                                          detailName: '',
+                                          isrequired: '',
+                                          suboptions: [
+                                            SubOption(
+                                                itemId: 0, name: '', price: '')
+                                          ])
+                                    ]),
+                                numOfItem: quantity));
+
+                            SnackBar snackBar = SnackBar(
+                              content: Text('Item added to cart!!'),
+                              backgroundColor: primary_Yellow,
+                              duration: Duration(seconds: 2),
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          },
+                          child: Text(
+                            'Add to cart',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Circular',
+                              fontSize: 18,
+                            ),
                           ),
+                          // child: Text(
+                          //   'Add to cart',
+                          //   style: TextStyle(
+                          //     color: Colors.white,
+                          //     fontFamily: 'Circular',
+                          //     fontSize: 18,
+                          //   ),
                         ),
                       ),
                     ),

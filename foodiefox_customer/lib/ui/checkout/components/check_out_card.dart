@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodiefox_customer/ui/components/constants.dart';
 import 'package:foodiefox_customer/ui/components/size_config.dart';
+import 'package:foodiefox_customer/ui/models/Cart.dart';
+import 'package:foodiefox_customer/ui/models/Data.dart';
 
 class CheckoutCard extends StatelessWidget {
   const CheckoutCard({
@@ -10,6 +12,14 @@ class CheckoutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+
+    double totalAmount = 0;
+
+    for (int a = 0; a < demoCarts.length; a++) {
+      totalAmount += demoCarts[a].numOfItem * demoCarts[a].product.price;
+    }
+
+    print('-------------' + totalAmount.toString());
 
     return Container(
       padding: EdgeInsets.symmetric(
@@ -67,7 +77,7 @@ class CheckoutCard extends StatelessWidget {
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "\$337.15",
+                        text: "R.s " + totalAmount.toString(),
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],

@@ -65,15 +65,38 @@ class _ReviewFormState extends State<ReviewForm> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5.0))),
               validator: (rating) {
-                if (rating.isEmpty) {
-                  return 'Rating field cannot be empty';
+                if (num.tryParse(rating) != null) {
+                  if (rating.isEmpty) {
+                    return 'Rating field cannot be empty';
+                  }
+                  if (int.parse(rating) < 1) {
+                    return 'Rating cannot be less than 1';
+                  }
+                  if (int.parse(rating) > 5) {
+                    return 'Rating cannot be greater than 5';
+                  }
+                  if (rating.isEmpty) {
+                    return 'Rating field cannot be empty';
+                  }
+                  if (int.parse(rating) < 1) {
+                    return 'Rating cannot be less than 1';
+                  }
+                  if (int.parse(rating) > 5) {
+                    return 'Rating cannot be greater than 5';
+                  }
+                  if (rating.isEmpty) {
+                    return 'Rating field cannot be empty';
+                  }
+                  if (int.parse(rating) < 1) {
+                    return 'Rating cannot be less than 1';
+                  }
+                  if (int.parse(rating) > 5) {
+                    return 'Rating cannot be greater than 5';
+                  }
+                } else {
+                  return 'Invalid Rating';
                 }
-                if (int.parse(rating) < 1) {
-                  return 'Rating cannot be less than 1';
-                }
-                if (int.parse(rating) > 5) {
-                  return 'Rating cannot be greater than 5';
-                }
+
                 return null;
               },
               keyboardType: TextInputType.numberWithOptions(decimal: true),

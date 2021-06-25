@@ -227,6 +227,7 @@ class _restaurantPageState extends State<restaurantPage> {
       padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
       child: InkWell(
         onTap: () {
+          print('------' + foodName + '--------');
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => DetailsPage(
                     heroTag: imgPath,
